@@ -1,6 +1,6 @@
-/* App.css */
 
-/* 全局样式 */
+
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -8,7 +8,6 @@ body {
   padding-top: 80px;
 }
 
-/* 头部导航 */
 .todo-header {
   position: fixed;
   top: 0;
@@ -16,7 +15,7 @@ body {
   right: 0;
   flex: auto;
   background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
   z-index: 20;
   padding: 1rem 2rem;
 }
@@ -43,7 +42,7 @@ body {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* 主内容区域 */
+
 main {
   margin-top: 100px;
   padding: 2rem;
@@ -51,7 +50,7 @@ main {
   justify-content: center;
 }
 
-/* 待办事项容器 */
+
 .todo-container {
   background-color: white;
   border-radius: 12px;
@@ -61,7 +60,7 @@ main {
   max-width: 600px;
 }
 
-/* 标题 */
+
 .todo-title {
   font-weight: 700;
   text-align: center;
@@ -84,7 +83,7 @@ main {
   border-radius: 2px;
 }
 
-/* 待办事项项 */
+
 .todo-item {
   margin-bottom: 15px;
   width: 100%;
@@ -109,7 +108,7 @@ main {
   color: #888;
 }
 
-/* 待办事项行 */
+
 .todo-row {
   display: flex;
   align-items: center;
@@ -130,7 +129,7 @@ main {
   background-color: rgba(0, 0, 0, 0.03);
 }
 
-/* 删除按钮 */
+
 .todo-row .todo-delete-button {
   cursor: pointer;
   width: 32px;
@@ -152,7 +151,7 @@ main {
   transform: scale(1.1);
 }
 
-/* 详情按钮 */
+
 .todo-row .todo-detail-button {
   cursor: pointer;
   padding: 0.4rem 0.8rem;
@@ -169,7 +168,7 @@ main {
   transform: translateY(-2px);
 }
 
-/* 空状态 */
+
 .todo-empty {
   margin-top: 1.5rem;
   font-size: 1.1rem;
@@ -181,7 +180,7 @@ main {
   border: 1px dashed #d1d5e0;
 }
 
-/* 添加待办事项 */
+
 .todo-add {
   margin-top: 2rem;
   display: flex;
@@ -227,7 +226,7 @@ main {
   transform: translateY(0);
 }
 
-/* 详情页面样式 */
+
 .todo-detail {
   display: flex;
   flex-direction: column;
@@ -243,7 +242,7 @@ main {
   text-align: center;
 }
 
-/* 错误页面 */
+
 .not-found {
   text-align: center;
   padding: 3rem;
@@ -260,7 +259,7 @@ main {
   color: #666;
 }
 
-/* 响应式设计 */
+
 @media (max-width: 768px) {
   .todo-header {
     padding: 1rem;
@@ -292,4 +291,5 @@ main {
   .todo-add .todo-add-button {
     width: 100%;
   }
+
 }

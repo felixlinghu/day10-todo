@@ -15,10 +15,14 @@ export function useTodoService() {
     .then(response => response.data);
   }
 
-  function updateTodo(props) {
+  function triggerTodo(props) {
     return api.put("/todos/" + props.todo.id, {done: !props.todo.done})
     .then(res => res.data);
   }
+  function updateTodo(props){
+    return api.put("/todos/" + props.todo.id, {id: props.todo.id,text: props.todo.text})
+    .then(res => res.data);
+  }
 
-  return {addTodo, deleteTodo, loadTodo, updateTodo}
+  return {addTodo, deleteTodo, loadTodo, updateTodo,triggerTodo}
 }
