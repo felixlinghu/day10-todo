@@ -1,7 +1,7 @@
 import {useReducer} from "react";
 import "./App.css"
 import {todoReducer} from "./reducers/TodoReducer";
-import {TodoContext } from "./contexts/TodoContext";
+import {TodoContext} from "./contexts/TodoContext";
 import {MultipleTodo} from "./components/MultipleTodo";
 import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
 import {ErrorPage} from "./pages/ErrorPage";
@@ -40,12 +40,6 @@ const router = createBrowserRouter([
     ]
   }
 ])
-
-function HomePage() {
-  return <div>
-    <MultipleTodo/>
-  </div>
-}
 
 export const initState = [
   {id: 1, text: "This is the first thing I need to do", done: false},
