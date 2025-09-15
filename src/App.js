@@ -4,16 +4,17 @@ import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
 import {RouterProvider} from "react-router";
 import {router} from "./routers/Router";
-import {loadTodo} from "./services/loadTodo";
+import {useTodoService} from "./services/useTodoService";
 
 function App() {
   const [state, dispatch] = useReducer(todoReducer, []);
-  useEffect(()=>{
-    loadTodo().then(todos=>dispatch({
-      type:"LOAD_TODO",
-      payload:todos,
+  const {addTodo, deleteTodo, loadTodo, updateTodo} = useTodoService();
+  useEffect(() => {
+    loadTodo().then(todos => dispatch({
+      type: "LOAD_TODO",
+      payload: todos,
     }))
-  },[dispatch])
+  }, [dispatch])
   return (
       <div>
         <TodoContext.Provider value={{state, dispatch}}>

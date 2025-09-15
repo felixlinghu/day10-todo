@@ -3,23 +3,19 @@ import {TodoItem} from "./TodoItem";
 
 import {TodoContext} from "../contexts/TodoContext";
 import {useNavigate} from "react-router";
-import {deleteTodo} from "../services/deleteTodo";
+import {useTodoService} from "../services/useTodoService";
 
 export function TodoGroup() {
   const {state, dispatch} = useContext(TodoContext)
   const navigate = useNavigate();
+  const {addTodo, deleteTodo, loadTodo, updateTodo} = useTodoService();
 
   function deleteToto(item) {
-    const promise = deleteTodo(item);
-    promise
-    .then(()=> dispatch({
+    deleteTodo(item)
+    .then(() => dispatch({
       type: "DELETE_TODO",
       payload: {id: item.id}
     }))
-    // dispatch({
-    //   type: "DELETE_TODO",
-    //   payload: {id: item.id}
-    // })
   }
 
   return <div>
