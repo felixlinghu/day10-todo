@@ -1,53 +1,31 @@
-import {useReducer} from "react";
+import {useEffect, useReducer} from "react";
 import "./App.css"
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext} from "./contexts/TodoContext";
-import {MultipleTodo} from "./components/MultipleTodo";
-import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
-import {ErrorPage} from "./pages/ErrorPage";
-import {TodoDetailPage} from "./pages/TodoDetailPage";
+import {RouterProvider} from "react-router";
+import axios from "axios";
+import {router} from "./routers/Router";
 
-function DefaultLayout() {
-  return <div>
-    <header className={"todo-header"}>
-      <nav>
-        <ul>
-          <li><NavLink to={"/"}>Home</NavLink></li>
-          <li><NavLink to={"/todos/1"}>1</NavLink></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <Outlet/>
-    </main>
-  </div>;
-}
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <DefaultLayout/>,
-    errorElement: <ErrorPage/>,
-    children: [
-      {
-        path: "/",
-        element: <MultipleTodo/>
+const api=axios.create(
+    {
+      baseURL:"https://68c7ac8f5d8d9f51473287c4.mockapi.io/",
+      headers:{
+        "Content-Type": "application/json"
       },
-      {
-        path: "/todos/:id",
-        element: <TodoDetailPage/>
-      }
-    ]
-  }
-])
-
-export const initState = [
-  {id: 1, text: "This is the first thing I need to do", done: false},
-  {id: 2, text: "This is the second thing I need to do", done: false},
-];
+      timeout: 5_000
+    }
+)
 
 function App() {
-  const [state, dispatch] = useReducer(todoReducer, initState);
+  const [state, dispatch] = useReducer(todoReducer, []);
+  useEffect(()=>{
+    api.get("/todos")
+    .then(response=>response.data)
+    .then(todos=>dispatch({
+      type:"LOAD_TODO",
+      payload:todos,
+    }))
+  },[dispatch])
   return (
       <div>
         <TodoContext.Provider value={{state, dispatch}}>
