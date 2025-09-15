@@ -72,7 +72,7 @@ export function TodoGroup() {
             onOk={handleOk}
             onCancel={handleCancel}
         >
-          <Input.TextArea value={inputValue} onChange={handleChange} placeholder="Enter your todo item"/>
+          <Input.TextArea value={inputValue} onChange={handleChange} />
         </Modal>
       </div>
   );

@@ -5,10 +5,10 @@ import {useTodoService} from "../services/useTodoService";
 
 export function TodoItem(props) {
   const {state, dispatch} = useContext(TodoContext)
-  const {addTodo, deleteTodo, loadTodo, updateTodo} = useTodoService();
+  const {triggerTodo} = useTodoService();
 
   function makeAsDone() {
-    updateTodo({todo: props.todo})
+    triggerTodo({todo: props.todo})
     .then(todo => dispatch({
       type: "TOGGLE_TODO",
       payload: todo
