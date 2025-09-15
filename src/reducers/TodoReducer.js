@@ -7,7 +7,7 @@ export function todoReducer(state, action) {
       const newState = [...state]
       return newState.map((value) => {
         if (value.id === id) {
-          return {id, text: value.text, done: !value.done}
+          return action.payload
         }
         return value
       })

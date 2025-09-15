@@ -3,16 +3,22 @@ import {TodoItem} from "./TodoItem";
 
 import {TodoContext} from "../contexts/TodoContext";
 import {useNavigate} from "react-router";
+import {api} from "../api/mockApi";
 
 export function TodoGroup() {
   const {state, dispatch} = useContext(TodoContext)
   const navigate = useNavigate();
 
   function deleteToto(item) {
-    dispatch({
+    api.delete("/todos/"+item.id,)
+    .then(()=> dispatch({
       type: "DELETE_TODO",
       payload: {id: item.id}
-    })
+    }))
+    // dispatch({
+    //   type: "DELETE_TODO",
+    //   payload: {id: item.id}
+    // })
   }
 
   return <div>
