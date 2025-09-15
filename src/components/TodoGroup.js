@@ -2,9 +2,11 @@ import {useContext} from "react";
 import {TodoItem} from "./TodoItem";
 
 import {TodoContext} from "../contexts/TodoContext";
+import {useNavigate} from "react-router";
 
 export function TodoGroup() {
     const {state, dispatch} = useContext(TodoContext)
+    const navigate = useNavigate();
 
     function deleteToto(item) {
         dispatch({
@@ -22,6 +24,7 @@ export function TodoGroup() {
                 <div className="todo-row" key={index}>
                     <TodoItem todo={item} index={index}/>
                     <button type="button" className={"todo-delete-button"} onClick={() => deleteToto(item)}>X</button>
+                    <button onClick={()=> navigate(`/todos/${item.id}`)}>detail</button>
                 </div>
             ))
         )}
