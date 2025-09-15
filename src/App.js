@@ -3,7 +3,8 @@ import "./App.css"
 import {todoReducer} from "./reducers/TodoReducer";
 import {TodoContext as TodoContext1} from "./contexts/TodoContext";
 import {MultipleTodo} from "./components/MultipleTodo";
-import {createBrowserRouter, NavLink, Outlet, RouterProvider, useRouteError} from "react-router";
+import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
+import {ErrorPage} from "./components/ErrorPage";
 
 function DefalutLayout() {
   return <div>
@@ -19,22 +20,6 @@ function DefalutLayout() {
     <main>
       <Outlet/>
     </main>
-  </div>
-}
-
-function ErrorPage() {
-  const error = useRouteError();
-  return <div>
-    {error.status === 404 ?
-        <div className={"not-found"}>
-          <h1>
-        <span>
-          Try
-        </span>
-          </h1>
-        </div> : <div>{JSON.stringify("error")}
-        </div>
-    }
   </div>
 }
 
