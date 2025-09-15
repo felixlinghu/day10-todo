@@ -1,7 +1,7 @@
 import {useReducer} from "react";
 import "./App.css"
 import {todoReducer} from "./reducers/TodoReducer";
-import {TodoContext as TodoContext1} from "./contexts/TodoContext";
+import {TodoContext } from "./contexts/TodoContext";
 import {MultipleTodo} from "./components/MultipleTodo";
 import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
 import {ErrorPage} from "./pages/ErrorPage";
@@ -9,7 +9,7 @@ import {TodoDetailPage} from "./pages/TodoDetailPage";
 
 function DefaultLayout() {
   return <div>
-    <header>
+    <header className={"todo-header"}>
       <nav>
         <ul>
           <li><NavLink to={"/"}>Home</NavLink></li>
@@ -56,9 +56,9 @@ function App() {
   const [state, dispatch] = useReducer(todoReducer, initState);
   return (
       <div>
-        <TodoContext1 value={{state, dispatch}}>
+        <TodoContext.Provider value={{state, dispatch}}>
           <RouterProvider router={router}/>
-        </TodoContext1>
+        </TodoContext.Provider>
       </div>
   );
 }
