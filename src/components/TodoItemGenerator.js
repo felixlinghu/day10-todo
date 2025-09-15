@@ -11,7 +11,7 @@ export function TodoItemGenerator() {
     if (input.trim() === "") {
       return;
     }
-    addTodo().then(todo => dispatch({
+    addTodo({input}).then(todo => dispatch({
       type: "ADD_TODO",
       payload: todo,
     }))

@@ -9,7 +9,7 @@ import {loadTodo} from "./services/loadTodo";
 function App() {
   const [state, dispatch] = useReducer(todoReducer, []);
   useEffect(()=>{
-    loadTodo.then(todos=>dispatch({
+    loadTodo().then(todos=>dispatch({
       type:"LOAD_TODO",
       payload:todos,
     }))

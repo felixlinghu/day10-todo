@@ -1,6 +1,6 @@
 import {api} from "../api/mockApi";
 
-export function addTodo(){
-  return  api.post("/todos",{ text:input.trim(), done: false})
+export function addTodo(props){
+  return  api.post("/todos",{ text:props.input.trim(), done: false})
   .then(res=>res.data)
 }

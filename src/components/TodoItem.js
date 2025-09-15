@@ -7,7 +7,7 @@ export function TodoItem(props) {
   const {state, dispatch} = useContext(TodoContext)
 
   function makeAsDone() {
-    updateTodo()
+    updateTodo({todo: props.todo})
     .then(todo=>  dispatch({
       type: "TOGGLE_TODO",
       payload:todo
